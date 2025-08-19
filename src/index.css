@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Pastel, warm palette */
+    --background: 25 45% 98%; /* warm off-white */
+    --foreground: 222.2 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 50% 10%;
+
+    --primary: 256 52% 50%; /* lavender */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 60% 92%; /* soft aqua */
+    --secondary-foreground: 222.2 50% 15%;
+
+    --muted: 210 30% 94%;
+    --muted-foreground: 220 14% 46%;
+
+    --accent: 18 90% 88%; /* peach */
+    --accent-foreground: 222.2 50% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 90%;
+    --input: 220 18% 90%;
+    --ring: 256 52% 50%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222.2 50% 15%;
+    --sidebar-primary: 256 52% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 96%;
+    --sidebar-accent-foreground: 222.2 50% 15%;
+    --sidebar-border: 220 18% 90%;
+    --sidebar-ring: 256 52% 50%;
+
+    /* Gradients */
+    --gradient-primary-start: 265 100% 88%;
+    --gradient-primary-end: 190 95% 85%;
+
+    /* Typography */
+    --font-sans: 'Nunito', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  }
+
+  .dark {
+    --background: 230 20% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 20% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 20% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 265 85% 75%;
+    --primary-foreground: 232 20% 15%;
+
+    --secondary: 225 25% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 225 25% 16%;
+    --muted-foreground: 215 20% 70%;
+
+    --accent: 18 90% 30%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 25% 22%;
+    --input: 225 25% 22%;
+    --ring: 265 85% 75%;
+
+    --sidebar-background: 230 20% 12%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 265 85% 75%;
+    --sidebar-primary-foreground: 230 20% 12%;
+    --sidebar-accent: 230 16% 16%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 230 16% 16%;
+    --sidebar-ring: 265 85% 75%;
+
+    --gradient-primary-start: 265 85% 40%;
+    --gradient-primary-end: 190 85% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .story-link {
+    position: relative;
+    display: inline-block;
+  }
+  .story-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: hsl(var(--primary));
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 300ms ease;
+  }
+  .story-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .hover-scale {
+    transition: transform 200ms ease;
+  }
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
